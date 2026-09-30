@@ -14,8 +14,10 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md">
+      {/* Navbar */}
+<header className="border-b border-slate-200 bg-white">
   <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    {/* Logo */}
     <Link href="/" className="flex items-center gap-3">
       <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
         <HeartPulse size={25} />
@@ -25,18 +27,33 @@ export default function Home() {
         <h1 className="text-xl font-bold tracking-tight text-slate-900">
           CareFlow
         </h1>
+
         <p className="text-xs text-slate-500">
           Healthcare Management
         </p>
       </div>
     </Link>
 
-    <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
-      <Link href="/" className="text-blue-600">
+    {/* Navigation */}
+    <nav className="hidden items-center gap-7 text-sm font-medium text-slate-600 md:flex">
+      <Link
+        href="/"
+        className="text-blue-600 transition hover:text-blue-700"
+      >
         Home
       </Link>
 
-      <Link href="/doctors" className="transition hover:text-blue-600">
+      <Link
+        href="/patients"
+        className="transition hover:text-blue-600"
+      >
+        Patients
+      </Link>
+
+      <Link
+        href="/doctors"
+        className="transition hover:text-blue-600"
+      >
         Doctors
       </Link>
 
@@ -55,12 +72,15 @@ export default function Home() {
       </Link>
     </nav>
 
-    <Link
-      href="/dashboard"
-      className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
-    >
-      Dashboard
-    </Link>
+    {/* Authentication */}
+<div className="flex items-center">
+  <Link
+    href="/login"
+    className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+  >
+    Login
+  </Link>
+</div>
   </div>
 </header>
 

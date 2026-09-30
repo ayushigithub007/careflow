@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { ArrowLeft, HeartPulse } from "lucide-react";
 
 const records = [
   {
@@ -38,73 +41,92 @@ const records = [
 export default function MedicalRecordsPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link
-            href="/dashboard"
-            className="text-2xl font-bold text-blue-600"
-          >
-            CareFlow
+      {/* Fixed Header */}
+      <header className="fixed inset-x-0 top-0 z-[100] h-[68px] border-b border-slate-200 bg-white">
+        <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6">
+          {/* CareFlow Logo */}
+          <Link href="/" className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
+              <HeartPulse size={22} />
+            </div>
+
+            <div>
+              <h1 className="text-lg font-bold tracking-tight text-slate-900">
+                CareFlow
+              </h1>
+
+              <p className="text-[10px] text-slate-500">
+                Healthcare Management
+              </p>
+            </div>
           </Link>
 
+          {/* Back to Home */}
           <Link
-            href="/dashboard"
-            className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            href="/"
+            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-3.5 py-2 text-xs font-medium text-slate-700 transition hover:bg-slate-50"
           >
-            Back to Dashboard
+            <ArrowLeft size={15} />
+            Back to Home
           </Link>
         </div>
       </header>
 
-      <section className="mx-auto max-w-7xl px-6 py-10">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+      {/* Page Content */}
+      <section className="mx-auto max-w-7xl px-6 pb-10 pt-[92px]">
+        {/* Page Heading */}
+        <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
           <div>
-
-            <h1 className="mt-1 text-3xl font-bold text-slate-900">
+            <h1 className="text-2xl font-bold text-slate-900">
               Medical Records
             </h1>
 
+            <p className="mt-1 text-sm text-slate-500">
+              View and manage patient medical records
+            </p>
           </div>
 
-          <button className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-medium text-white hover:bg-blue-700">
+          <button className="rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700">
             + Add Record
           </button>
         </div>
 
-        <div className="mt-8">
+        {/* Search */}
+        <div className="mt-6">
           <input
             type="text"
             placeholder="Search patient, doctor, or diagnosis..."
-            className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-700 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+            className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-700 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
           />
         </div>
 
-        <div className="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+        {/* Records Table */}
+        <div className="mt-5 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[800px]">
               <thead className="border-b border-slate-200 bg-slate-50">
                 <tr>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-600">
+                  <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600">
                     Patient
                   </th>
 
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-600">
+                  <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600">
                     Doctor
                   </th>
 
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-600">
+                  <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600">
                     Diagnosis
                   </th>
 
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-600">
+                  <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600">
                     Date
                   </th>
 
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-600">
+                  <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600">
                     Status
                   </th>
 
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-600">
+                  <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600">
                     Action
                   </th>
                 </tr>
@@ -116,25 +138,25 @@ export default function MedicalRecordsPage() {
                     key={record.id}
                     className="border-b border-slate-100 last:border-0 hover:bg-slate-50"
                   >
-                    <td className="px-6 py-4 font-medium text-slate-900">
+                    <td className="px-5 py-3 font-medium text-sm text-slate-900">
                       {record.patient}
                     </td>
 
-                    <td className="px-6 py-4 text-sm text-slate-600">
+                    <td className="px-5 py-3 text-sm text-slate-600">
                       {record.doctor}
                     </td>
 
-                    <td className="px-6 py-4 text-sm text-slate-600">
+                    <td className="px-5 py-3 text-sm text-slate-600">
                       {record.diagnosis}
                     </td>
 
-                    <td className="px-6 py-4 text-sm text-slate-600">
+                    <td className="px-5 py-3 text-sm text-slate-600">
                       {record.date}
                     </td>
 
-                    <td className="px-6 py-4">
+                    <td className="px-5 py-3">
                       <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium ${
+                        className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${
                           record.status === "Completed"
                             ? "bg-green-50 text-green-700"
                             : "bg-yellow-50 text-yellow-700"
@@ -144,8 +166,8 @@ export default function MedicalRecordsPage() {
                       </span>
                     </td>
 
-                    <td className="px-6 py-4">
-                      <button className="text-sm font-medium text-blue-600 hover:text-blue-800">
+                    <td className="px-5 py-3">
+                      <button className="text-sm font-medium text-blue-600 transition hover:text-blue-800">
                         View
                       </button>
                     </td>
